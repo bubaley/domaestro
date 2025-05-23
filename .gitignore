@@ -186,8 +186,8 @@ Icon?
 
 # uv lock file (project uses uv)
 # Uncomment if you want to track lock file in version control
-# uv.lock 
+# uv.lock
 
 # Project-specific
 /configs/
-/templates/ 
+/templates/

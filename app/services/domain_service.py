@@ -55,14 +55,13 @@ def validate_domain(request: DomainRegisterRequest) -> DomainResponse:
     if not config_exists(domain):
         return DomainResponse(domain=domain, success=False, error='Config not found')
 
-    template_name = None
     try:
         configs_manager = ConfigsManager(CONFIGS_DIR)
         config_filename = f'{domain}.yaml'
         config_content = configs_manager.read_file(config_filename)
         template_name = extract_template_name_from_config(config_content)
     except Exception:
-        pass
+        template_name = None
 
     valid, msg = check_cname_a_record(domain)
     if not valid:
