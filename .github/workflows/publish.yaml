@@ -1,0 +1,32 @@
+name: Publish Docker Image
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Login to Yandex Cloud Container Registry
+        uses: yc-actions/yc-cr-login@v3
+        with:
+          yc-sa-json-credentials: ${{ secrets.YC_KEY_JSON }}
+
+      - name: Get version from tag
+        run: echo "VERSION=${GITHUB_REF##*/}" >> $GITHUB_ENV
+
+      - name: Build, tag, and push image to Yandex Cloud Container Registry
+        env:
+          YC_REGISTRY: ${{ secrets.YC_REGISTRY }}
+          IMAGE_NAME: ${{ secrets.IMAGE_NAME }}
+        run: |
+          docker build . -t cr.yandex/$YC_REGISTRY/$IMAGE_NAME:latest
+          docker build . -t cr.yandex/$YC_REGISTRY/$IMAGE_NAME:$VERSION
+          docker push cr.yandex/$YC_REGISTRY/$IMAGE_NAME:latest
+          docker push cr.yandex/$YC_REGISTRY/$IMAGE_NAME:$VERSION

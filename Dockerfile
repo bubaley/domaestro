@@ -1,5 +1,5 @@
 # Use the official Python 3.13 slim image as the base
-FROM python:3.13-slim as builder
+FROM python:3.13-slim AS builder
 
 # Install system dependencies required for compilation
 RUN apt-get update && apt-get install -y \
