@@ -1,0 +1,55 @@
+[project]
+name = "domaestro"
+version = "0.1.0"
+description = ""
+requires-python = "==3.13.*"
+dependencies = [
+    "dnspython>=2.7.0",
+    "fastapi[standard]>=0.115.12",
+    "pydantic-settings>=2.9.1",
+    "python-dotenv>=1.1.0",
+    "requests>=2.32.3",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.2.0",
+    "ruff>=0.11.10",
+    "coverage>=7.8.1",
+]
+
+[tool.pyupgrade]
+py313-plus = true
+
+[tool.ruff]
+fix = true
+line-length = 120
+indent-width = 4
+target-version = "py313"
+
+[tool.ruff.lint]
+extend-select = ["I"]
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.lint.extend-per-file-ignores]
+"core/settings/*.py" = ["F405", "F403"]
+
+[tool.ruff.format]
+quote-style = "single"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.coverage.report]
+fail_under = 60
+skip_empty = true
+skip_covered = true
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == '__main__':",
+    "if settings.DEBUG"
+]
+omit = [
+    "*/migrations/*",
+    "*/tests/*",
+    "core/*",
+]
