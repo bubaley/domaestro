@@ -42,10 +42,6 @@ COPY --from=builder /app/.venv /app/.venv
 # Copy application source code
 COPY . .
 
-# Create necessary directories and set permissions
-RUN mkdir -p /app/configs /app/templates && \
-    chown -R appuser:appuser /app
-
 # Switch to non-privileged user
 USER appuser
 
