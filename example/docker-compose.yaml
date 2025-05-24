@@ -1,0 +1,48 @@
+services:
+  traefik:
+    container_name: "traefik"
+    image: traefik:v3.4
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "${TRAEFIK_DASHBOARD_PORT:-8080}:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./acme.json:/acme.json
+      - ./configs:/etc/traefik/dynamic:ro
+    command:
+      - "--api.dashboard=true"
+      - "--api.insecure=${TRAEFIK_INSECURE:-false}"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedByDefault=false"
+      - "--providers.docker.network=traefik"
+      - "--providers.file.directory=/etc/traefik/dynamic"
+      - "--providers.file.watch=true"
+      - "--certificatesresolvers.letsencrypt.acme.storage=acme.json"
+      - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
+      - "--certificatesresolvers.letsencrypt.acme.email=${TRAEFIK_LETSENCRYPT_EMAIL:-example@example.com}"
+      - "--log.level=INFO"
+      - "--log.filepath=/var/log/traefik.log"
+      - "--accesslog.filepath=/var/log/access.log"
+    networks:
+      - traefik
+  domaestro:
+    container_name: domaestro
+    image: bubaley/domaestro:latest
+    restart: unless-stopped
+    ports:
+      - "${DOMAESTRO_PORT:-8000}:8000"
+    volumes:
+      - ./configs:/app/configs
+      - ./templates:/app/templates
+    env_file:
+      - .env
+    networks:
+      - traefik
+
+networks:
+  traefik:
+    external: false
