@@ -24,4 +24,4 @@ http:
     {{slug_domain}}-service:
       loadBalancer:
         servers:
-          - url: "http://your-backend-server:port" 
+          - url: "http://your-backend-server:port"

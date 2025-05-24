@@ -316,4 +316,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Support
 
-For issues and questions, please open an issue on the GitHub repository. 
+For issues and questions, please open an issue on the GitHub repository.
