@@ -43,10 +43,9 @@ COPY --from=builder /app/.venv /app/.venv
 COPY . .
 
 # Create necessary directories and set permissions
-mkdir -p /app/configs /app/templates
-chown -R appuser:appuser /app
-chmod 755 /app/templates
-chmod 770 /app/configs
+RUN mkdir -p /app/configs /app/templates && \
+    chown -R appuser:appuser /app && \
+    chmod -R 775 /app
 
 # Switch to non-privileged user
 USER appuser
