@@ -5,23 +5,23 @@ http:
         scheme: https
         permanent: true
   routers:
-    {{slug_domain}}-http:
+    "{{slug_domain}}-http":
       rule: "Host(`{{domain}}`)"
       entryPoints:
         - web
       middlewares:
         - redirect-to-https
-      service: {{slug_domain}}-service
+      service: "{{slug_domain}}-service"
 
-    {{slug_domain}}-https:
+    "{{slug_domain}}-https":
       rule: "Host(`{{domain}}`)"
       entryPoints:
         - websecure
-      service: {{slug_domain}}-service
+      service: "{{slug_domain}}-service"
       tls:
         certResolver: letsencrypt
   services:
-    {{slug_domain}}-service:
+    "{{slug_domain}}-service":
       loadBalancer:
         servers:
           - url: "http://your-backend-server:port"
