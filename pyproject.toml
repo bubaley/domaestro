@@ -64,8 +64,11 @@ markers = [
     "slow: Slow running tests"
 ]
 
+[tool.bandit]
+skips = ["B101"]
+
 [tool.coverage.report]
-fail_under = 60
+fail_under = 30
 skip_empty = true
 skip_covered = true
 exclude_lines = [

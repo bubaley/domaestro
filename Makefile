@@ -14,7 +14,7 @@ run: ## run runserver
 	uvicorn app.main:app --reload
 
 lint: ## run lint
-	pre-commit run --all-files --show-diff-on-failure
+	pre-commit run --all-files
 
 test: ## run tests
 	pytest

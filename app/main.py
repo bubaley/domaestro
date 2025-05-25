@@ -2,9 +2,9 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
-from app.services.configs_manager import ConfigsManager
 from app.api.router import router as api_router
 from app.core.config import CONFIGS_DIR, TEMPLATES_DIR
+from app.services.configs_manager import ConfigsManager
 
 
 @asynccontextmanager
