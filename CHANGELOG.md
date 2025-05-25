@@ -1,3 +1,10 @@
+## [0.3.0](https://github.com/bubaley/domaestro/compare/v0.2.1...v0.3.0) (2025-05-25)
+
+
+### Features
+
+* **release:** Add Create Release step to workflow ([b7e3feb](https://github.com/bubaley/domaestro/commit/b7e3feb54e67f47fe095f0adf9f2240d9a68bb63))
+
 ## [0.2.1](https://github.com/bubaley/domaestro/compare/v0.2.0...v0.2.1) (2025-05-25)
 
 
