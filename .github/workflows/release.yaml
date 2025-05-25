@@ -23,7 +23,8 @@ jobs:
         uses: TriPSs/conventional-changelog-action@v5 # https://github.com/TriPSs/conventional-changelog-action
         with:
           github-token: ${{ secrets.github_token }}
-          git-user-name: "conventional-changelog[bot]"
+          git-user-name: "github-actions[bot]"
+          git-user-email: "41898282+github-actions[bot]@users.noreply.github.com"
           version-file: "./pyproject.toml"
           version-path: "project.version"
           preset: "conventionalcommits"
