@@ -2,7 +2,6 @@ name: Docker Build & Publish
 
 on:
   push:
-    branches: ["main"]
     tags: ['v[0-9]+.[0-9]+.[0-9]+']
   workflow_run:
     workflows: ["CI"]
@@ -36,7 +35,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=semver,pattern={{version}}
+            type=semver,pattern={{version}},prefix=,suffix=
             type=raw,value=latest
 
       - name: Set up Docker Buildx
