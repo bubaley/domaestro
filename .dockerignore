@@ -45,6 +45,7 @@ test_*/
 
 # Development
 .env.local
+.env.example
 .env.development
 .env.test
 *.log
@@ -58,3 +59,8 @@ dist/
 Dockerfile*
 docker-compose*.yml
 .dockerignore
+
+# Project-specific
+configs/
+templates/
+example/
