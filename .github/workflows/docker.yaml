@@ -57,3 +57,9 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Docker info
+        run: |
+          docker version
+          docker info
+          docker buildx inspect --bootstrap
