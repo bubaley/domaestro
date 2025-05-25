@@ -23,7 +23,7 @@ jobs:
 
       - name: Conventional Changelog Action
         id: changelog
-        uses: TriPSs/conventional-changelog-action@v5 # https://github.com/TriPSs/conventional-changelog-action
+        uses: TriPSs/conventional-changelog-action@v6 # https://github.com/TriPSs/conventional-changelog-action
         with:
           github-token: ${{ secrets.github_token }}
           git-user-name: "github-actions[bot]"
