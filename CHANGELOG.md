@@ -1,4 +1,11 @@
-## 0.2.0 (2025-05-25)
+## [0.2.1](https://github.com/bubaley/domaestro/compare/v0.2.0...v0.2.1) (2025-05-25)
+
+
+### Bug Fixes
+
+* Update git user configuration in release workflow ([f0377b8](https://github.com/bubaley/domaestro/commit/f0377b878f186d5c5f385cd090d90f457f2e47f6))
+
+## [0.2.0](https://github.com/bubaley/domaestro/compare/d83c2ac3164d51460f8799daca81fa1ea0ae4111...v0.2.0) (2025-05-25)
 
 
 ### Features
