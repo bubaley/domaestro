@@ -55,6 +55,8 @@ jobs:
     name: Unit Tests & Coverage
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      AUTH_TOKEN: test-auth-token
 
     steps:
       - name: Checkout repo
