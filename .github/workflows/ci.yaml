@@ -62,7 +62,7 @@ jobs:
       AUTH_TOKEN: test-auth-token
 
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Install uv
