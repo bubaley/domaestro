@@ -22,9 +22,6 @@ RUN uv sync --frozen --no-dev --no-cache
 # Final stage for production
 FROM python:3.13-slim
 
-# Create a user for security
-RUN groupadd -r appuser && useradd -r -g appuser appuser
-
 # Install runtime-only dependencies
 RUN apt-get update && apt-get install -y \
     ca-certificates \
@@ -41,14 +38,6 @@ COPY --from=builder /app/.venv /app/.venv
 
 # Copy application source code
 COPY . .
-
-# Create necessary directories and set permissions
-RUN mkdir -p /app/configs /app/templates && \
-    chown -R appuser:appuser /app && \
-    chmod -R 775 /app
-
-# Switch to non-privileged user
-USER appuser
 
 # Add virtual environment to PATH
 ENV PATH="/app/.venv/bin:$PATH"
