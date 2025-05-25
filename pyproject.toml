@@ -69,7 +69,7 @@ markers = [
 skips = ["B101"]
 
 [tool.coverage.report]
-fail_under = 30
+fail_under = 50
 skip_empty = true
 skip_covered = true
 exclude_lines = [
