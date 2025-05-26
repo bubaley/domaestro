@@ -87,7 +87,7 @@ services:
 
   domaestro:
     container_name: domaestro
-    image: your-dockerhub-username/domaestro:latest
+    image: bubaley/domaestro:latest
     restart: unless-stopped
     ports:
       - "${DOMAESTRO_PORT:-8000}:8000"
