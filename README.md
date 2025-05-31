@@ -71,6 +71,9 @@ services:
       - "--api.insecure=${TRAEFIK_INSECURE:-false}"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
+      - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedByDefault=false"
       - "--providers.docker.network=traefik"
@@ -80,11 +83,9 @@ services:
       - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
       - "--certificatesresolvers.letsencrypt.acme.email=${TRAEFIK_LETSENCRYPT_EMAIL:-example@example.com}"
       - "--log.level=INFO"
-      - "--log.filepath=/var/log/traefik.log"
-      - "--accesslog.filepath=/var/log/access.log"
+      - "--accesslog=true"
     networks:
       - traefik
-
   domaestro:
     container_name: domaestro
     image: bubaley/domaestro:latest
