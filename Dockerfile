@@ -1,5 +1,5 @@
 # Use the official Python 3.13 slim image as the base
-FROM python:3.13-slim AS builder
+FROM python:3.14-slim AS builder
 
 # Install system dependencies required for compilation
 RUN apt-get update && apt-get install -y \
@@ -20,7 +20,7 @@ COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-dev --no-cache
 
 # Final stage for production
-FROM python:3.13-slim
+FROM python:3.14-slim
 
 # Install runtime-only dependencies
 RUN apt-get update && apt-get install -y \
